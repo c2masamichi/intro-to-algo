@@ -1,2 +1,3 @@
-# intro-to-algo
-implementation of pseudocode in Introduction to Algorithms
+# Introduction to Algorithms
+
+The implementation of "Introduction to Algorithms (Third Edition)"
