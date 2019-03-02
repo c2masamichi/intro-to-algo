@@ -34,7 +34,6 @@ class TestClient(unittest.TestCase):
                 prog.permute_by_sorting(a)
                 self.assertCountEqual(a, expected)
 
-
     def test_randomize_in_place(self):
         parameters = [
             [3],
