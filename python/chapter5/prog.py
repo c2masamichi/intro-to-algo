@@ -15,3 +15,10 @@ def permute_by_sorting(a):
     for i in range(n):
         p[i] = random.randint(1, n ** 3)
     sort_by_priority(a, p)
+
+
+def randomize_in_place(a):
+    n = len(a)
+    for i in range(n):
+        r = random.randint(i, n-1)
+        a[i], a[r] = a[r], a[i]

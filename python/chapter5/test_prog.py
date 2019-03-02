@@ -35,5 +35,18 @@ class TestClient(unittest.TestCase):
                 self.assertCountEqual(a, expected)
 
 
+    def test_randomize_in_place(self):
+        parameters = [
+            [3],
+            [3, 2, 5, 1],
+            [10, 2, 2, 4, 4, 3, 7],
+        ]
+        for a in parameters:
+            with self.subTest(a=a):
+                expected = a[:]
+                prog.randomize_in_place(a)
+                self.assertCountEqual(a, expected)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
