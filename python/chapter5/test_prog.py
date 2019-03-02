@@ -5,7 +5,7 @@ import prog
 
 class TestClient(unittest.TestCase):
 
-    def test_sort_by_p(self):
+    def test_sort_by_priority(self):
         parameters = [
             (
                 ([10], [1]),
@@ -19,7 +19,7 @@ class TestClient(unittest.TestCase):
         for args, expected in parameters:
             a, p = args
             with self.subTest(args=args):
-                prog.sort_by_p(a, p),
+                prog.sort_by_priority(a, p),
                 self.assertEqual(a, expected)
 
     def test_permute_by_sorting(self):
