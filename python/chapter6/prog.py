@@ -11,7 +11,7 @@ def right(i):
 
 
 def max_heapify(a, i):
-    heap_size = len(a)
+    heap_size = len(a) - 1
     l_index = left(i)
     r_index = right(i)
     if l_index <= heap_size and a[l_index] > a[i]:
