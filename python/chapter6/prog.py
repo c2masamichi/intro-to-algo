@@ -23,3 +23,9 @@ def max_heapify(a, i):
     if largest != i:
         a[i], a[largest] = a[largest], a[i]
         max_heapify(a, largest)
+
+
+def build_max_heap(a):
+    length = len(a) - 1
+    for i in range(length // 2, 0, -1):
+        max_heapify(a, i)

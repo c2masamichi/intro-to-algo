@@ -49,6 +49,22 @@ class TestClient(unittest.TestCase):
                     prog.max_heapify(a, i),
                     self.assertEqual(a, expected)
 
+    def test_build_max_heap(self):
+            parameters = [
+                (
+                    [-1, 1, 2, 3],
+                    [-1, 3, 2, 1]
+                ),
+                (
+                    [-1, 4, 1, 3, 2, 16, 9, 10, 14, 8, 7],
+                    [-1, 16, 14, 10, 8, 7, 9, 3, 2, 4, 1]
+                ),
+            ]
+            for a, expected in parameters:
+                with self.subTest(a=a):
+                    prog.build_max_heap(a),
+                    self.assertEqual(a, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
