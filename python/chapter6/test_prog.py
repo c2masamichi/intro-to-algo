@@ -65,6 +65,26 @@ class TestClient(unittest.TestCase):
                     prog.build_max_heap(a),
                     self.assertEqual(a, expected)
 
+    def test_heapsort(self):
+            parameters = [
+                (
+                    [-1, 2, 3, 2, 1],
+                    [-1, 1, 2, 2, 3]
+                ),
+                (
+                    [-1, 4, 1, 3, 2, 16, 9, 10, 14, 8, 7],
+                    [-1, 1, 2, 3, 4, 7, 8, 9, 10, 14, 16]
+                ),
+                (
+                    [100, 2, 3, 1],
+                    [100, 1, 2, 3]
+                ),
+            ]
+            for a, expected in parameters:
+                with self.subTest(a=a):
+                    prog.heapsort(a),
+                    self.assertEqual(a, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
