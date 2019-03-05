@@ -89,6 +89,27 @@ class TestClient(unittest.TestCase):
         a = [-1, 3, 2, 1]
         self.assertEqual(prog.heap_maximum(a), 3)
 
+    def test_heap_extract_max(self):
+            parameters = [
+                (
+                    [-1, 4, 2, 3, 1],
+                    (4, [-1, 3, 2, 1])
+                ),
+                (
+                    [-1, 16, 14, 10, 8, 7, 9, 3, 2, 4, 1],
+                    (16, [-1, 14, 8, 10, 4, 7, 9, 3, 2, 1])
+                ),
+            ]
+            for a, expected in parameters:
+                maxv, after = expected
+                with self.subTest(a=a):
+                    self.assertEqual(prog.heap_extract_max(a), maxv)
+                    self.assertEqual(a, after)
+
+            with self.assertRaises(Exception) as e:
+                prog.heap_extract_max([-1])
+            self.assertEqual(e.exception.args[0], 'Heap Underflow')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

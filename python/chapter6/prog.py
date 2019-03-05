@@ -44,3 +44,13 @@ def heapsort(a):
 
 def heap_maximum(a):
     return a[1]
+
+
+def heap_extract_max(a):
+    heap_size = len(a) - 1
+    if heap_size < 1:
+        raise Exception('Heap Underflow')
+    maxv = a[1]
+    a[1] = a.pop()
+    max_heapify(a, 1)
+    return maxv
