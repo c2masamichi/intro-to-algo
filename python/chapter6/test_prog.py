@@ -85,6 +85,10 @@ class TestClient(unittest.TestCase):
                     prog.heapsort(a),
                     self.assertEqual(a, expected)
 
+    def test_heap_maximum(self):
+        a = [-1, 3, 2, 1]
+        self.assertEqual(prog.heap_maximum(a), 3)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

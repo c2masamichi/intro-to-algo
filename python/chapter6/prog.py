@@ -40,3 +40,7 @@ def heapsort(a):
         a[1], a[i] = a[i], a[1]
         heap_size -= 1
         max_heapify(a, 1, heap_size)
+
+
+def heap_maximum(a):
+    return a[1]
