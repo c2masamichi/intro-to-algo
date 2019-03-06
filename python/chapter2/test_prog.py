@@ -12,7 +12,7 @@ class TestClient(unittest.TestCase):
             ([2, 5, 4, 1, 3, 2, 3], [1, 2, 2, 3, 3, 4, 5]),
         ]
         for a, expected in parameters:
-            with self.subTest(a=a):
+            with self.subTest(expected=expected):
                 prog.insertion_sort(a)
                 self.assertEqual(a, expected)
 
@@ -33,7 +33,7 @@ class TestClient(unittest.TestCase):
         ]
         for args, expected in parameters:
             a, p, q, r = args
-            with self.subTest(args=args):
+            with self.subTest(expected=expected):
                 prog.merge(a, p, q, r),
                 self.assertEqual(a, expected)
 
@@ -44,7 +44,7 @@ class TestClient(unittest.TestCase):
             ([2, 5, 4, 1, 3, 2, 3], [1, 2, 2, 3, 3, 4, 5]),
         ]
         for a, expected in parameters:
-            with self.subTest(a=a):
+            with self.subTest(expected=expected):
                 prog.merge_sort(a, 0, len(a) - 1)
                 self.assertEqual(a, expected)
 
