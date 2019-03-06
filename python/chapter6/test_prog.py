@@ -127,6 +127,27 @@ class TestClient(unittest.TestCase):
                     prog.heap_increase_key(a, i, key),
                     self.assertEqual(a, expected)
 
+    def test_max_heap_insert(self):
+            parameters = [
+                (
+                    ([-1, 4, 3, 2], 1),
+                    [-1, 4, 3, 2, 1]
+                ),
+                (
+                    ([-1, 4, 3, 2], 5),
+                    [-1, 5, 4, 2, 3]
+                ),
+                (
+                    ([-1, 16, 14, 10, 8, 7, 9, 3, 2, 4, 1], 15),
+                    [-1, 16, 15, 10, 8, 14, 9, 3, 2, 4, 1, 7]
+                ),
+            ]
+            for args, expected in parameters:
+                a, key = args
+                with self.subTest(args=args):
+                    prog.max_heap_insert(a, key),
+                    self.assertEqual(a, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

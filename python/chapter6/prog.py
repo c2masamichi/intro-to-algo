@@ -63,3 +63,9 @@ def heap_increase_key(a, i, key):
     while i > 1 and a[parent(i)] < a[i]:
         a[i], a[parent(i)] = a[parent(i)], a[i]
         i = parent(i)
+
+
+def max_heap_insert(a, key):
+    heap_size = len(a)
+    a.append(-float('inf'))
+    heap_increase_key(a, heap_size, key)
