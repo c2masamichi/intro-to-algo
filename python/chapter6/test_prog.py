@@ -127,6 +127,11 @@ class TestClient(unittest.TestCase):
                     prog.heap_increase_key(a, i, key),
                     self.assertEqual(a, expected)
 
+            with self.assertRaises(Exception) as e:
+                prog.heap_increase_key([-1, 10], 1, 9)
+            self.assertEqual(
+                e.exception.args[0], 'New key is smaller than current key.')
+
     def test_max_heap_insert(self):
             parameters = [
                 (
