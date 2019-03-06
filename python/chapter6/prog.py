@@ -54,3 +54,12 @@ def heap_extract_max(a):
     a[1] = a.pop()
     max_heapify(a, 1)
     return maxv
+
+
+def heap_increase_key(a, i, key):
+    if key < a[i]:
+        raise Exception('New key is smaller than current key.')
+    a[i] = key
+    while i > 1 and a[parent(i)] < a[i]:
+        a[i], a[parent(i)] = a[parent(i)], a[i]
+        i = parent(i)

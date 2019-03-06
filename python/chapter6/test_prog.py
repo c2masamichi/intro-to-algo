@@ -110,6 +110,23 @@ class TestClient(unittest.TestCase):
                 prog.heap_extract_max([-1])
             self.assertEqual(e.exception.args[0], 'Heap Underflow')
 
+    def test_heap_increase_key(self):
+            parameters = [
+                (
+                    ([-1, 3, 2, 1], 2, 4),
+                    [-1, 4, 3, 1]
+                ),
+                (
+                    ([-1, 16, 14, 10, 8, 7, 9, 3, 2, 4, 1], 9, 15),
+                    [-1, 16, 15, 10, 14, 7, 9, 3, 2, 8, 1]
+                ),
+            ]
+            for args, expected in parameters:
+                a, i, key = args
+                with self.subTest(args=args):
+                    prog.heap_increase_key(a, i, key),
+                    self.assertEqual(a, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
