@@ -18,7 +18,7 @@ class TestClient(unittest.TestCase):
         ]
         for args, expected in parameters:
             a, p = args
-            with self.subTest(args=args):
+            with self.subTest(expected=expected):
                 prog.sort_by_priority(a, p),
                 self.assertEqual(a, expected)
 
@@ -29,8 +29,8 @@ class TestClient(unittest.TestCase):
             [10, 2, 2, 4, 4, 3, 7],
         ]
         for a in parameters:
-            with self.subTest(a=a):
-                expected = a[:]
+            expected = a[:]
+            with self.subTest(expected=expected):
                 prog.permute_by_sorting(a)
                 self.assertCountEqual(a, expected)
 
@@ -41,8 +41,8 @@ class TestClient(unittest.TestCase):
             [10, 2, 2, 4, 4, 3, 7],
         ]
         for a in parameters:
-            with self.subTest(a=a):
-                expected = a[:]
+            expected = a[:]
+            with self.subTest(expected=expected):
                 prog.randomize_in_place(a)
                 self.assertCountEqual(a, expected)
 
