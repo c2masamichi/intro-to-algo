@@ -13,7 +13,7 @@ class TestClient(unittest.TestCase):
             ),
             (
                 ([2, 8, 7, 1, 3, 5, 6, 4], 0, 7),
-                ([2, 1, 3, 4, 7, 5, 6, 8], 3),
+                ([2, 1, 3, 4, 7, 5, 6, 8], 3)
             ),
         ]
         for args, expected in parameters:
@@ -27,15 +27,15 @@ class TestClient(unittest.TestCase):
         parameters = [
             (
                 ([4, 3, 1, 3], 0, 3),
-                [1, 3, 3, 4],
+                [1, 3, 3, 4]
             ),
             (
                 ([2, 8, 7, 1, 3, 5, 6, 4], 0, 7),
-                [1, 2, 3, 4, 5, 6, 7, 8],
+                [1, 2, 3, 4, 5, 6, 7, 8]
             ),
             (
                 ([2, 4, 3, 1, 7, 6, 8, 5], 0, 3),
-                [1, 2, 3, 4, 7, 6, 8, 5],
+                [1, 2, 3, 4, 7, 6, 8, 5]
             ),
         ]
         for args, expected in parameters:
