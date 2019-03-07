@@ -23,3 +23,10 @@ def randomized_partition(a, p, r):
     i = random.randint(p, r)
     a[r], a[i] = a[r], a[i]
     return partition(a, p, r)
+
+
+def randomized_quicksort(a, p, r):
+    if p < r:
+        q = randomized_partition(a, p, r)
+        randomized_quicksort(a, p, q - 1)
+        randomized_quicksort(a, q + 1, r)
