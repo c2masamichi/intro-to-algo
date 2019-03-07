@@ -44,6 +44,22 @@ class TestClient(unittest.TestCase):
                 prog.quicksort(a, p, r)
                 self.assertEqual(a, expected)
 
+    def test_randomized_partition(self):
+        parameters = [
+            (
+                ([4, 3, 1, 2], 0, 3),
+                (1, 2, 3, 4)
+            ),
+            (
+                ([2, 8, 7, 1, 3, 5, 6, 4], 0, 7),
+                (1, 2, 3, 4, 5, 6, 7, 8)
+            ),
+        ]
+        for args, expected in parameters:
+            a, p, r = args
+            with self.subTest(expected=expected):
+                self.assertIn(prog.partition(a, p, r), expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

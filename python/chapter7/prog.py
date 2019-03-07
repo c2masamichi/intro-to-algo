@@ -1,3 +1,6 @@
+import random
+
+
 def partition(a, p, r):
     x = a[r]
     i = p - 1
@@ -14,3 +17,9 @@ def quicksort(a, p, r):
         q = partition(a, p, r)
         quicksort(a, p, q - 1)
         quicksort(a, q + 1, r)
+
+
+def randomized_partition(a, p, r):
+    i = random.randint(p, r)
+    a[r], a[i] = a[r], a[i]
+    return partition(a, p, r)
