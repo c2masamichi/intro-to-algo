@@ -1,13 +1,13 @@
 def parent(i):
-    return (i - 1) // 2
+    return (i-1) // 2
 
 
 def left(i):
-    return 2 * i + 1
+    return 2*i + 1
 
 
 def right(i):
-    return 2 * (i + 1)
+    return 2 * (i+1)
 
 
 def max_heapify(a, i, heap_size=None):
@@ -28,7 +28,7 @@ def max_heapify(a, i, heap_size=None):
 
 def build_max_heap(a):
     length = len(a) - 1
-    for i in range((length - 1) // 2, -1, -1):
+    for i in range((length-1) // 2, -1, -1):
         max_heapify(a, i)
 
 
