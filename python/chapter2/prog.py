@@ -32,7 +32,7 @@ def merge(a, p, q, r):
 
 def merge_sort(a, p, r):
     if p < r:
-        q = (p + r) // 2
+        q = (p+r) // 2
         merge_sort(a, p, q)
         merge_sort(a, q+1, r)
         merge(a, p, q, r)
