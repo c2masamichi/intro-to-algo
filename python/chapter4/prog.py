@@ -22,7 +22,7 @@ def find_maximum_subarray(a, low, high):
     if high == low:
         return low, high, a[low]
     else:
-        mid = (low + high) // 2
+        mid = (low+high) // 2
         left_low, left_high, left_sum = find_maximum_subarray(
             a, low, mid)
         right_low, right_high, right_sum = find_maximum_subarray(
