@@ -64,6 +64,30 @@ class TestClient(unittest.TestCase):
                 self.assertEqual(
                     prog.radix_sort(a, d), expected)
 
+    def test_insertion_sort(self):
+        parameters = [
+            ([3], [3]),
+            ([3, 4, 1, 2], [1, 2, 3, 4]),
+            ([2, 5, 4, 1, 3, 2, 3], [1, 2, 2, 3, 3, 4, 5]),
+        ]
+        for a, expected in parameters:
+            with self.subTest(expected=expected):
+                prog.insertion_sort(a)
+                self.assertEqual(a, expected)
+
+    def test_bucket_sort(self):
+        parameters = [
+            ([0.1], [0.1]),
+            ([0.3, 0.4, 0.1, 0.2], [0.1, 0.2, 0.3, 0.4]),
+            (
+                [0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.23, 0.68],
+                [0.12, 0.17, 0.21, 0.23, 0.26, 0.39, 0.68, 0.72, 0.78, 0.94]
+            ),
+        ]
+        for a, expected in parameters:
+            with self.subTest(expected=expected):
+                self.assertEqual(prog.bucket_sort(a), expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
