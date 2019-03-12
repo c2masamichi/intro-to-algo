@@ -6,5 +6,8 @@ class Node:
         self.right = right
 
 
-def inorder_tree_walk(a):
-    pass
+def inorder_tree_walk(x, result):
+    if x is not None:
+        inorder_tree_walk(x.left, result)
+        result.append(x.key)
+        inorder_tree_walk(x.right, result)
