@@ -45,6 +45,14 @@ class TestClient(unittest.TestCase):
             with self.subTest(k=k):
                 self.assertIs(prog.iterative_tree_search(x, k), expected)
 
+    def test_tree_minimum(self):
+        root = Node(6)
+        root.left = Node(5, parent=root)
+        root.right = Node(7, parent=root)
+        expected = 5
+        result = prog.tree_minimum(root)
+        self.assertEqual(result.key, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

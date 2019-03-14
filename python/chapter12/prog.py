@@ -29,3 +29,9 @@ def iterative_tree_search(x, k):
         else:
             x = x.right
     return x
+
+
+def tree_minimum(x):
+    while x.left is not None:
+        x = x.left
+    return x
