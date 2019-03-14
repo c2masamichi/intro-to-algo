@@ -20,3 +20,12 @@ def tree_search(x, k):
         return tree_search(x.left, k)
     else:
         return tree_search(x.right, k)
+
+
+def iterative_tree_search(x, k):
+    while x is not None and k != x.key:
+        if k < x.key:
+            x = x.left
+        else:
+            x = x.right
+    return x
