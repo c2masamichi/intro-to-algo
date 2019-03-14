@@ -35,3 +35,9 @@ def tree_minimum(x):
     while x.left is not None:
         x = x.left
     return x
+
+
+def tree_maximum(x):
+    while x.right is not None:
+        x = x.right
+    return x

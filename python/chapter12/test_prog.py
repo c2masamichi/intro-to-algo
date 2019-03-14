@@ -53,6 +53,14 @@ class TestClient(unittest.TestCase):
         result = prog.tree_minimum(root)
         self.assertEqual(result.key, expected)
 
+    def test_tree_maximum(self):
+        root = Node(6)
+        root.left = Node(5, parent=root)
+        root.right = Node(7, parent=root)
+        expected = 7
+        result = prog.tree_maximum(root)
+        self.assertEqual(result.key, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
