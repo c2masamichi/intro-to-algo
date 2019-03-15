@@ -61,6 +61,19 @@ class TestClient(unittest.TestCase):
         result = prog.tree_maximum(root)
         self.assertEqual(result.key, expected)
 
+    def test_tree_successor(self):
+        root = Node(6)
+        root.left = Node(5, parent=root)
+        root.right = Node(7, parent=root)
+        parameters = [
+            (root, root.right),
+            (root.left, root),
+            (root.right, None),
+        ]
+        for x, expected in parameters:
+            with self.subTest(x=x):
+                self.assertIs(prog.tree_successor(x), expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

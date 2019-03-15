@@ -41,3 +41,13 @@ def tree_maximum(x):
     while x.right is not None:
         x = x.right
     return x
+
+
+def tree_successor(x):
+    if x.right is not None:
+        return tree_minimum(x.right)
+    y = x.parent
+    while y is not None and x is y.right:
+        x = y
+        y = y.parent
+    return y
