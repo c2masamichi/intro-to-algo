@@ -1,7 +1,7 @@
 import unittest
 
 import prog
-from prog import Node
+from prog import Node, Tree
 
 
 class TestClient(unittest.TestCase):
@@ -73,6 +73,17 @@ class TestClient(unittest.TestCase):
         for x, expected in parameters:
             with self.subTest(x=x):
                 self.assertIs(prog.tree_successor(x), expected)
+
+    def test_tree_insert(self):
+        root = Node(3)
+        root.left = Node(1, parent=root)
+        root.right = Node(5, parent=root)
+        t = Tree(root)
+        prog.tree_insert(t, Node(2))
+        expected = [1, 2, 3, 5]
+        result = []
+        prog.inorder_tree_walk(t.root, result)
+        self.assertEqual(result, expected)
 
 
 if __name__ == '__main__':

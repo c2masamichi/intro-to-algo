@@ -6,6 +6,11 @@ class Node:
         self.right = right
 
 
+class Tree:
+    def __init__(self, root=None):
+        self.root = root
+
+
 def inorder_tree_walk(x, result):
     if x is not None:
         inorder_tree_walk(x.left, result)
@@ -51,3 +56,21 @@ def tree_successor(x):
         x = y
         y = y.parent
     return y
+
+
+def tree_insert(t, z):
+    y = None
+    x = t.root
+    while x is not None:
+        y = x
+        if z.key < x.key:
+            x = x.left
+        else:
+            x = x.right
+    z.parent = y
+    if y is None:
+        t.root = z
+    elif z.key < y.key:
+        y.left = z
+    else:
+        y.right = z
