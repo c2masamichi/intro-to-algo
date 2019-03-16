@@ -69,12 +69,27 @@ class TestClient(unittest.TestCase):
                 self.assertIs(prog.tree_successor(x), expected)
 
     def test_tree_insert(self):
-        t = Tree(self.make_nodes(3, 1, 5))
-        prog.tree_insert(t, Node(2))
-        expected = [1, 2, 3, 5]
-        result = []
-        prog.inorder_tree_walk(t.root, result)
-        self.assertEqual(result, expected)
+        parameters = [
+            (
+                (Tree(self.make_nodes(3, 1, 5)), Node(2)),
+                [1, 2, 3, 5]
+            ),
+            (
+                (Tree(self.make_nodes(3, 1, 5)), Node(6)),
+                [1, 3, 5, 6]
+            ),
+            (
+                (Tree(), Node(10)),
+                [10]
+            ),
+        ]
+        for args, expected in parameters:
+            t, z = args
+            with self.subTest(expected=expected):
+                prog.tree_insert(t, z)
+                result = []
+                prog.inorder_tree_walk(t.root, result)
+                self.assertEqual(result, expected)
 
 
 if __name__ == '__main__':
