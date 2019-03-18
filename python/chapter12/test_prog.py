@@ -94,17 +94,17 @@ class TestClient(unittest.TestCase):
                 self.assertEqual(result, expected)
 
     def test_transplant(self):
-        t1 = Tree(Node(3))
+        t1 = Tree(self.make_nodes(3, right_key=5))
         t2 = Tree(self.make_nodes(3, 1, 5))
         t3 = Tree(self.make_nodes(3, 1, 5))
         parameters = [
             (
-                (t1, t1.root, t1.root.left),
-                []
+                (t1, t1.root, t1.root.right),
+                [5]
             ),
             (
-                (t2, t2.root.left, Node(2)),
-                [2, 3, 5]
+                (t2, t2.root.left, t2.root.left.right),
+                [3, 5]
             ),
             (
                 (t3, t3.root.right, t3.root.right.right),
