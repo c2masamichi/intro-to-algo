@@ -91,6 +91,32 @@ class TestClient(unittest.TestCase):
                 prog.inorder_tree_walk(t.root, result)
                 self.assertEqual(result, expected)
 
+    def test_transplant(self):
+        t1 = Tree(Node(3))
+        t2 = Tree(self.make_nodes(3, 1, 5))
+        t3 = Tree(self.make_nodes(3, 1, 5))
+        parameters = [
+            (
+                (t1, t1.root, t1.root.left),
+                []
+            ),
+            (
+                (t2, t2.root.left, Node(2)),
+                [2, 3, 5]
+            ),
+            (
+                (t3, t3.root.right, t3.root.right.right),
+                [1, 3]
+            ),
+        ]
+        for args, expected in parameters:
+            t, u, v = args
+            with self.subTest(expected=expected):
+                prog.transplant(t, u, v)
+                result = []
+                prog.inorder_tree_walk(t.root, result)
+                self.assertEqual(result, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -74,3 +74,14 @@ def tree_insert(t, z):
         y.left = z
     else:
         y.right = z
+
+
+def transplant(t, u, v):
+    if u.parent is None:
+        t.root = v
+    elif u is u.parent.left:
+        u.parent.left = v
+    else:
+        u.parent.right = v
+    if v is not None:
+        v.parent = u.parent
