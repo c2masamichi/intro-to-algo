@@ -6,10 +6,12 @@ from prog import Node, Tree
 
 class TestClient(unittest.TestCase):
 
-    def make_nodes(self, root_key, left_key, right_key):
+    def make_nodes(self, root_key, left_key=None, right_key=None):
         root = Node(root_key)
-        root.left = Node(left_key, parent=root)
-        root.right = Node(right_key, parent=root)
+        if left_key is not None:
+            root.left = Node(left_key, parent=root)
+        if right_key is not None:
+            root.right = Node(right_key, parent=root)
         return root
 
     def test_inorder_tree_walk(self):
@@ -116,6 +118,43 @@ class TestClient(unittest.TestCase):
                 result = []
                 prog.inorder_tree_walk(t.root, result)
                 self.assertEqual(result, expected)
+
+    def test_tree_delete_simple(self):
+        t1 = Tree(self.make_nodes(3, 1, 5))
+        t2 = Tree(self.make_nodes(3, left_key=1))
+        t3 = Tree(self.make_nodes(3, 1, 5))
+        parameters = [
+            (
+                (t1, t1.root.left),
+                [3, 5]
+            ),
+            (
+                (t2, t2.root),
+                [1]
+            ),
+            (
+                (t3, t3.root),
+                [1, 5]
+            ),
+        ]
+        for args, expected in parameters:
+            t, z = args
+            with self.subTest(expected=expected):
+                prog.tree_delete(t, z)
+                result = []
+                prog.inorder_tree_walk(t.root, result)
+                self.assertEqual(result, expected)
+
+    def test_tree_delete_complex(self):
+        t = Tree(self.make_nodes(5, 1, 9))
+        t.root.right.left = self.make_nodes(7, right_key=8)
+        t.root.right.left.parent = t.root.right
+        t.root.right.right = Node(11, parent=t.root.right)
+        expected = [1, 7, 8, 9, 11]
+        prog.tree_delete(t, t.root)
+        result = []
+        prog.inorder_tree_walk(t.root, result)
+        self.assertEqual(result, expected)
 
 
 if __name__ == '__main__':

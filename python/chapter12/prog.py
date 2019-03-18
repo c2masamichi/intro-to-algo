@@ -85,3 +85,19 @@ def transplant(t, u, v):
         u.parent.right = v
     if v is not None:
         v.parent = u.parent
+
+
+def tree_delete(t, z):
+    if z.left is None:
+        transplant(t, z, z.right)
+    elif z.right is None:
+        transplant(t, z, z.left)
+    else:
+        y = tree_minimum(z.right)
+        if y.parent is not z:
+            transplant(t, y, y.right)
+            y.right = z.right
+            y.right.parent = y
+        transplant(t, z, y)
+        y.left = z.left
+        y.left.parent = y
