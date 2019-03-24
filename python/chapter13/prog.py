@@ -3,7 +3,7 @@ RED = 1
 
 
 class Node:
-    def __init__(self, color, key=None, parent=None, left=None, right=None):
+    def __init__(self, key, color=BLACK, parent=None, left=None, right=None):
         self.color = color
         self.key = key
         self.parent = parent
@@ -14,4 +14,19 @@ class Node:
 class Tree:
     def __init__(self, root=None):
         self.root = root
-        self.nil = Node(BLACK)
+
+
+def left_rotate(t, x):
+    y = x.right
+    x.right = y.left
+    if y.left is not None:
+        y.left.parent = x
+    y.parent = x.parent
+    if x.parent is None:
+        t.root = y
+    elif x is x.parent.left:
+        x.parent.left = y
+    else:
+        x.parent.right = y
+    y.left = x
+    x.parent = y
