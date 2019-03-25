@@ -27,15 +27,15 @@ class TestClient(unittest.TestCase):
         y.right = Node(y_right_key, parent=y)
         prog.left_rotate(t, x)
         parameters = [
-            (t.root.key, y_key),
-            (t.root.left.key, x_key),
-            (t.root.left.left.key, x_left_key),
-            (t.root.left.right.key, y_left_key),
-            (t.root.right.key, y_right_key),
+            (t.root, y_key),
+            (t.root.right, y_right_key),
+            (t.root.left, x_key),
+            (t.root.left.left, x_left_key),
+            (t.root.left.right, y_left_key),
         ]
-        for key, expected in parameters:
+        for n, expected in parameters:
             with self.subTest(expected=expected):
-                self.assertEqual(key, expected)
+                self.assertEqual(n.key, expected)
 
     def test_right_rotate(self):
         y_key = 7
