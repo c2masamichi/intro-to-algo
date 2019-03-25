@@ -26,11 +26,16 @@ class TestClient(unittest.TestCase):
         y.left = Node(y_left_key, parent=y)
         y.right = Node(y_right_key, parent=y)
         prog.left_rotate(t, x)
-        self.assertEqual(t.root.key, y_key)
-        self.assertEqual(t.root.left.key, x_key)
-        self.assertEqual(t.root.left.left.key, x_left_key)
-        self.assertEqual(t.root.left.right.key, y_left_key)
-        self.assertEqual(t.root.right.key, y_right_key)
+        parameters = [
+            (t.root.key, y_key),
+            (t.root.left.key, x_key),
+            (t.root.left.left.key, x_left_key),
+            (t.root.left.right.key, y_left_key),
+            (t.root.right.key, y_right_key),
+        ]
+        for key, expected in parameters:
+            with self.subTest(expected=expected):
+                self.assertEqual(key, expected)
 
 
 if __name__ == '__main__':
