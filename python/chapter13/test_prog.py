@@ -37,6 +37,29 @@ class TestClient(unittest.TestCase):
             with self.subTest(expected=expected):
                 self.assertEqual(key, expected)
 
+    def test_right_rotate(self):
+        y_key = 7
+        y_right_key = 11
+        x_key = 3
+        x_left_key = 1
+        x_right_key = 5
+        t = Tree(self.make_nodes(y_key, x_key, y_right_key))
+        y = t.root
+        x = t.root.left
+        x.left = Node(x_left_key, parent=x)
+        x.right = Node(x_right_key, parent=x)
+        prog.right_rotate(t, y)
+        parameters = [
+            (t.root, x_key),
+            (t.root.left, x_left_key),
+            (t.root.right, y_key),
+            (t.root.right.left, x_right_key),
+            (t.root.right.right, y_right_key),
+        ]
+        for n, expected in parameters:
+            with self.subTest(expected=expected):
+                self.assertEqual(n.key, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

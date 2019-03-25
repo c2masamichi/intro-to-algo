@@ -30,3 +30,19 @@ def left_rotate(t, x):
         x.parent.right = y
     y.left = x
     x.parent = y
+
+
+def right_rotate(t, y):
+    x = y.left
+    y.left = x.right
+    if x.right is not None:
+        x.right.parent = y
+    x.parent = y.parent
+    if y.parent is None:
+        t.root = x
+    elif y is y.parent.left:
+        y.parent.left = x
+    else:
+        y.parent.right = x
+    x.right = y
+    y.parent = x
