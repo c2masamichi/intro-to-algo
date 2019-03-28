@@ -20,5 +20,5 @@ def permute_by_sorting(a):
 def randomize_in_place(a):
     n = len(a)
     for i in range(n):
-        r = random.randint(i, n-1)
+        r = random.randint(i, n - 1)
         a[i], a[r] = a[r], a[i]
