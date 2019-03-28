@@ -21,7 +21,7 @@ def merge(a, p, q, r):
     right.append(float('inf'))
     i = 0
     j = 0
-    for k in range(p, r+1):
+    for k in range(p, r + 1):
         if left[i] <= right[j]:
             a[k] = left[i]
             i += 1
@@ -34,5 +34,5 @@ def merge_sort(a, p, r):
     if p < r:
         q = (p+r) // 2
         merge_sort(a, p, q)
-        merge_sort(a, q+1, r)
+        merge_sort(a, q + 1, r)
         merge(a, p, q, r)
