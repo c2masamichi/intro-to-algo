@@ -6,12 +6,15 @@ from prog import Node, Tree, BLACK, RED
 
 class TestClient(unittest.TestCase):
 
-    def make_nodes(self, root_key, left_key=None, right_key=None):
-        root = Node(root_key)
+    def add_children(self, root, left_key=None, right_key=None):
         if left_key is not None:
             root.left = Node(left_key, parent=root)
         if right_key is not None:
             root.right = Node(right_key, parent=root)
+
+    def make_nodes(self, root_key, left_key=None, right_key=None):
+        root = Node(root_key)
+        self.add_children(root, left_key, right_key)
         return root
 
     def test_left_rotate(self):
@@ -23,8 +26,7 @@ class TestClient(unittest.TestCase):
         t = Tree(self.make_nodes(x_key, x_left_key, y_key))
         x = t.root
         y = t.root.right
-        y.left = Node(y_left_key, parent=y)
-        y.right = Node(y_right_key, parent=y)
+        self.add_children(y, y_left_key, y_right_key)
         prog.left_rotate(t, x)
         parameters = [
             (t.root, y_key),
@@ -46,8 +48,7 @@ class TestClient(unittest.TestCase):
         t = Tree(self.make_nodes(y_key, x_key, y_right_key))
         y = t.root
         x = t.root.left
-        x.left = Node(x_left_key, parent=x)
-        x.right = Node(x_right_key, parent=x)
+        self.add_children(x, x_left_key, x_right_key)
         prog.right_rotate(t, y)
         parameters = [
             (t.root, x_key),
