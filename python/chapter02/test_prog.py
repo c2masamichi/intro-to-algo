@@ -6,18 +6,18 @@ import prog
 class TestClient(unittest.TestCase):
 
     def test_insertion_sort(self):
-        parameters = [
+        parameters = (
             ([3], [3]),
             ([3, 4, 1, 2], [1, 2, 3, 4]),
             ([2, 5, 4, 1, 3, 2, 3], [1, 2, 2, 3, 3, 4, 5]),
-        ]
+        )
         for a, expected in parameters:
             with self.subTest(expected=expected):
                 prog.insertion_sort(a)
                 self.assertEqual(a, expected)
 
     def test_merge(self):
-        parameters = [
+        parameters = (
             (
                ([3, 4, 1, 2], 0, 1, 3),
                [1, 2, 3, 4]
@@ -30,7 +30,7 @@ class TestClient(unittest.TestCase):
                ([5, 8, 6, 7, 3, 4, 1, 2], 4, 5, 7),
                [5, 8, 6, 7, 1, 2, 3, 4]
             ),
-        ]
+        )
         for args, expected in parameters:
             a, p, q, r = args
             with self.subTest(expected=expected):
@@ -38,11 +38,11 @@ class TestClient(unittest.TestCase):
                 self.assertEqual(a, expected)
 
     def test_merge_sort(self):
-        parameters = [
+        parameters = (
             ([3], [3]),
             ([4, 3, 1, 2], [1, 2, 3, 4]),
             ([2, 5, 4, 1, 3, 2, 3], [1, 2, 2, 3, 3, 4, 5]),
-        ]
+        )
         for a, expected in parameters:
             with self.subTest(expected=expected):
                 prog.merge_sort(a, 0, len(a) - 1)

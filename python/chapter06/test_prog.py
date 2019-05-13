@@ -6,36 +6,36 @@ import prog
 class TestClient(unittest.TestCase):
 
     def test_parent(self):
-        parameters = [
+        parameters = (
             (3, 1),
             (4, 1),
-        ]
+        )
         for v, expected in parameters:
             with self.subTest(v=v, expected=expected):
                 self.assertEqual(prog.parent(v), expected)
 
     def test_left(self):
-        parameters = [
+        parameters = (
             (0, 1),
             (1, 3),
             (2, 5),
-        ]
+        )
         for v, expected in parameters:
             with self.subTest(v=v, expected=expected):
                 self.assertEqual(prog.left(v), expected)
 
     def test_right(self):
-        parameters = [
+        parameters = (
             (0, 2),
             (1, 4),
             (2, 6),
-        ]
+        )
         for v, expected in parameters:
             with self.subTest(v=v, expected=expected):
                 self.assertEqual(prog.right(v), expected)
 
     def test_max_heapify(self):
-            parameters = [
+            parameters = (
                 (
                     ([3, 4, 5, 2, 1], 0),
                     [5, 4, 3, 2, 1]
@@ -44,7 +44,7 @@ class TestClient(unittest.TestCase):
                     ([16, 4, 10, 14, 7, 9, 3, 2, 8, 1], 1),
                     [16, 14, 10, 8, 7, 9, 3, 2, 4, 1]
                 ),
-            ]
+            )
             for args, expected in parameters:
                 a, i = args
                 with self.subTest(expected=expected):
@@ -52,7 +52,7 @@ class TestClient(unittest.TestCase):
                     self.assertEqual(a, expected)
 
     def test_build_max_heap(self):
-            parameters = [
+            parameters = (
                 (
                     [1, 2, 3, 4, 5],
                     [5, 4, 3, 1, 2]
@@ -61,14 +61,14 @@ class TestClient(unittest.TestCase):
                     [4, 1, 3, 2, 16, 9, 10, 14, 8, 7],
                     [16, 14, 10, 8, 7, 9, 3, 2, 4, 1]
                 ),
-            ]
+            )
             for a, expected in parameters:
                 with self.subTest(expected=expected):
                     prog.build_max_heap(a),
                     self.assertEqual(a, expected)
 
     def test_heapsort(self):
-            parameters = [
+            parameters = (
                 (
                     [2, 3, 2, 1],
                     [1, 2, 2, 3]
@@ -77,7 +77,7 @@ class TestClient(unittest.TestCase):
                     [4, 1, 3, 2, 16, 9, 10, 14, 8, 7],
                     [1, 2, 3, 4, 7, 8, 9, 10, 14, 16]
                 ),
-            ]
+            )
             for a, expected in parameters:
                 with self.subTest(expected=expected):
                     prog.heapsort(a),
@@ -88,7 +88,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(prog.heap_maximum(a), 3)
 
     def test_heap_extract_max(self):
-            parameters = [
+            parameters = (
                 (
                     [4],
                     (4, [])
@@ -101,7 +101,7 @@ class TestClient(unittest.TestCase):
                     [16, 14, 10, 8, 7, 9, 3, 2, 4, 1],
                     (16, [14, 8, 10, 4, 7, 9, 3, 2, 1])
                 ),
-            ]
+            )
             for a, expected in parameters:
                 maxv, after = expected
                 with self.subTest(expected=expected):
@@ -113,7 +113,7 @@ class TestClient(unittest.TestCase):
             self.assertEqual(e.exception.args[0], 'Heap Underflow')
 
     def test_heap_increase_key(self):
-            parameters = [
+            parameters = (
                 (
                     ([3, 2, 1], 1, 4),
                     [4, 3, 1]
@@ -122,7 +122,7 @@ class TestClient(unittest.TestCase):
                     ([16, 14, 10, 8, 7, 9, 3, 2, 4, 1], 8, 15),
                     [16, 15, 10, 14, 7, 9, 3, 2, 8, 1]
                 ),
-            ]
+            )
             for args, expected in parameters:
                 a, i, key = args
                 with self.subTest(expected=expected):
@@ -135,7 +135,7 @@ class TestClient(unittest.TestCase):
                 e.exception.args[0], 'New key is smaller than current key.')
 
     def test_max_heap_insert(self):
-            parameters = [
+            parameters = (
                 (
                     ([4, 3, 2], 1),
                     [4, 3, 2, 1]
@@ -148,7 +148,7 @@ class TestClient(unittest.TestCase):
                     ([16, 14, 10, 8, 7, 9, 3, 2, 4, 1], 15),
                     [16, 15, 10, 8, 14, 9, 3, 2, 4, 1, 7]
                 ),
-            ]
+            )
             for args, expected in parameters:
                 a, key = args
                 with self.subTest(expected=expected):

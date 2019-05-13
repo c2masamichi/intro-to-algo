@@ -6,7 +6,7 @@ import prog
 class TestClient(unittest.TestCase):
 
     def test_sort_by_priority(self):
-        parameters = [
+        parameters = (
             (
                 ([10], [1]),
                 [10]
@@ -15,7 +15,7 @@ class TestClient(unittest.TestCase):
                 ([10, 20, 30], [2, 3, 1]),
                 [30, 10, 20]
             ),
-        ]
+        )
         for args, expected in parameters:
             a, p = args
             with self.subTest(expected=expected):
@@ -23,11 +23,11 @@ class TestClient(unittest.TestCase):
                 self.assertEqual(a, expected)
 
     def test_permute_by_sorting(self):
-        parameters = [
+        parameters = (
             [3],
             [3, 2, 5, 1],
             [10, 2, 2, 4, 4, 3, 7],
-        ]
+        )
         for a in parameters:
             expected = a[:]
             with self.subTest(expected=expected):
@@ -35,11 +35,11 @@ class TestClient(unittest.TestCase):
                 self.assertCountEqual(a, expected)
 
     def test_randomize_in_place(self):
-        parameters = [
+        parameters = (
             [3],
             [3, 2, 5, 1],
             [10, 2, 2, 4, 4, 3, 7],
-        ]
+        )
         for a in parameters:
             expected = a[:]
             with self.subTest(expected=expected):

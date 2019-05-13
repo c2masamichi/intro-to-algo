@@ -23,12 +23,12 @@ class TestClient(unittest.TestCase):
 
     def test_tree_search(self):
         root = self.make_nodes(6, 5, 7)
-        parameters = [
+        parameters = (
             ((root, 6), root),
             ((root, 5), root.left),
             ((root, 7), root.right),
             ((root, 10), None),
-        ]
+        )
         for args, expected in parameters:
             x, k = args
             with self.subTest(k=k):
@@ -36,12 +36,12 @@ class TestClient(unittest.TestCase):
 
     def test_iterative_tree_search(self):
         root = self.make_nodes(6, 5, 7)
-        parameters = [
+        parameters = (
             ((root, 6), root),
             ((root, 5), root.left),
             ((root, 7), root.right),
             ((root, 10), None),
-        ]
+        )
         for args, expected in parameters:
             x, k = args
             with self.subTest(k=k):
@@ -61,17 +61,17 @@ class TestClient(unittest.TestCase):
 
     def test_tree_successor(self):
         root = self.make_nodes(6, 5, 7)
-        parameters = [
+        parameters = (
             (root, root.right),
             (root.left, root),
             (root.right, None),
-        ]
+        )
         for x, expected in parameters:
             with self.subTest(x=x):
                 self.assertIs(prog.tree_successor(x), expected)
 
     def test_tree_insert(self):
-        parameters = [
+        parameters = (
             (
                 (Tree(self.make_nodes(3, 1, 5)), Node(2)),
                 [1, 2, 3, 5]
@@ -84,7 +84,7 @@ class TestClient(unittest.TestCase):
                 (Tree(), Node(10)),
                 [10]
             ),
-        ]
+        )
         for args, expected in parameters:
             t, z = args
             with self.subTest(expected=expected):
@@ -97,7 +97,7 @@ class TestClient(unittest.TestCase):
         t1 = Tree(self.make_nodes(3, right_key=5))
         t2 = Tree(self.make_nodes(3, 1, 5))
         t3 = Tree(self.make_nodes(3, 1, 5))
-        parameters = [
+        parameters = (
             (
                 (t1, t1.root, t1.root.right),
                 [5]
@@ -110,7 +110,7 @@ class TestClient(unittest.TestCase):
                 (t3, t3.root.right, t3.root.right.right),
                 [1, 3]
             ),
-        ]
+        )
         for args, expected in parameters:
             t, u, v = args
             with self.subTest(expected=expected):
@@ -123,7 +123,7 @@ class TestClient(unittest.TestCase):
         t1 = Tree(self.make_nodes(3, 1, 5))
         t2 = Tree(self.make_nodes(3, left_key=1))
         t3 = Tree(self.make_nodes(3, 1, 5))
-        parameters = [
+        parameters = (
             (
                 (t1, t1.root.left),
                 [3, 5]
@@ -136,7 +136,7 @@ class TestClient(unittest.TestCase):
                 (t3, t3.root),
                 [1, 5]
             ),
-        ]
+        )
         for args, expected in parameters:
             t, z = args
             with self.subTest(expected=expected):

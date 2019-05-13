@@ -28,13 +28,13 @@ class TestClient(unittest.TestCase):
         y = t.root.right
         self.add_children(y, y_left_key, y_right_key)
         prog.left_rotate(t, x)
-        parameters = [
+        parameters = (
             (t.root, y_key),
             (t.root.right, y_right_key),
             (t.root.left, x_key),
             (t.root.left.left, x_left_key),
             (t.root.left.right, y_left_key),
-        ]
+        )
         for n, expected in parameters:
             with self.subTest(expected=expected):
                 self.assertEqual(n.key, expected)
@@ -50,13 +50,13 @@ class TestClient(unittest.TestCase):
         x = t.root.left
         self.add_children(x, x_left_key, x_right_key)
         prog.right_rotate(t, y)
-        parameters = [
+        parameters = (
             (t.root, x_key),
             (t.root.left, x_left_key),
             (t.root.right, y_key),
             (t.root.right.left, x_right_key),
             (t.root.right.right, y_right_key),
-        ]
+        )
         for n, expected in parameters:
             with self.subTest(expected=expected):
                 self.assertEqual(n.key, expected)
