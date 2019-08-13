@@ -2,7 +2,7 @@ def find_max_crossing_subarray(a, low, mid, high):
     left_sum = -float('inf')
     sumv = 0
     for i in range(mid, low - 1, -1):
-        sumv = sumv + a[i]
+        sumv += a[i]
         if sumv > left_sum:
             left_sum = sumv
             max_left = i
@@ -10,7 +10,7 @@ def find_max_crossing_subarray(a, low, mid, high):
     right_sum = -float('inf')
     sumv = 0
     for j in range(mid + 1, high + 1):
-        sumv = sumv + a[j]
+        sumv += a[j]
         if sumv > right_sum:
             right_sum = sumv
             max_right = j
