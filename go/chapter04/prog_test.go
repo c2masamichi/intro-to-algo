@@ -1,6 +1,7 @@
 package chapter04
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -84,6 +85,33 @@ func TestFindMaximumSubarray(t *testing.T) {
 		left, right, sum := findMaximumSubarray(a, low, high)
 		actual := Result{left, right, sum}
 		if actual != expected {
+			t.Errorf("i: %d\nactual: %v\nexpected: %v", i, actual, expected)
+		}
+	}
+}
+
+func TestSquareMatrixMultiply(t *testing.T) {
+	parameters := []struct {
+		a        [][]float64
+		b        [][]float64
+		expected [][]float64
+	}{
+		{
+			[][]float64{{1, 2}, {3, 4}},
+			[][]float64{{1, 0}, {0, 1}},
+			[][]float64{{1, 2}, {3, 4}},
+		},
+		{
+			[][]float64{{1, 2}, {3, 4}},
+			[][]float64{{2, 1}, {1, 2}},
+			[][]float64{{4, 5}, {10, 11}},
+		},
+	}
+
+	for i, param := range parameters {
+		a, b, expected := param.a, param.b, param.expected
+		actual := squareMatrixMultiply(a, b)
+		if !reflect.DeepEqual(actual, expected) {
 			t.Errorf("i: %d\nactual: %v\nexpected: %v", i, actual, expected)
 		}
 	}

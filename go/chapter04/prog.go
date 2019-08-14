@@ -47,3 +47,17 @@ func findMaximumSubarray(a []float64, low, high int) (int, int, float64) {
 		return crossLow, crossHigh, crossSum
 	}
 }
+
+func squareMatrixMultiply(a, b [][]float64) [][]float64 {
+	n := len(a)
+	c := make([][]float64, n)
+	for i := 0; i < n; i++ {
+		c[i] = make([]float64, n)
+		for j := 0; j < n; j++ {
+			for k := 0; k < n; k++ {
+				c[i][j] += a[i][k] * b[k][j]
+			}
+		}
+	}
+	return c
+}
