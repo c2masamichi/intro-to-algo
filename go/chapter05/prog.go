@@ -31,7 +31,7 @@ func permuteBySorting(a []float64) {
 	p := make([]int, n)
 	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < n; i++ {
-		p[i] = rand.Intn(int(math.Pow(float64(n), 3)))
+		p[i] = rand.Intn(int(math.Pow(float64(n), 3))) + 1
 	}
 	sortByPriority(a, p)
 }
