@@ -35,3 +35,12 @@ func permuteBySorting(a []float64) {
 	}
 	sortByPriority(a, p)
 }
+
+func randomizeInPlace(a []float64) {
+	n := len(a)
+	rand.Seed(time.Now().UnixNano())
+	for i := 0; i < n; i++ {
+		r := rand.Intn(n-i) + i
+		a[i], a[r] = a[r], a[i]
+	}
+}
