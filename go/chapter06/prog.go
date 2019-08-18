@@ -11,3 +11,7 @@ func left(i int) int {
 func right(i int) int {
 	return 2 * (i + 1)
 }
+
+func heapMaximum(a []float64) float64 {
+	return a[0]
+}

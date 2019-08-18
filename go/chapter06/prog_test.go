@@ -59,3 +59,12 @@ func TestRight(t *testing.T) {
 		}
 	}
 }
+
+func TestHeapMaximum(t *testing.T) {
+	a := []float64{3, 2, 1}
+	var expected float64 = 3
+	actual := heapMaximum(a)
+	if actual != expected {
+		t.Errorf("actual: %v\nexpected: %v", actual, expected)
+	}
+}
