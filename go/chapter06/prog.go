@@ -12,6 +12,22 @@ func right(i int) int {
 	return 2 * (i + 1)
 }
 
+func maxHeapify(a []float64, i, heapSize int) {
+	leftIndex := left(i)
+	rightIndex := right(i)
+	largest := i
+	if leftIndex <= heapSize && a[leftIndex] > a[i] {
+		largest = leftIndex
+	}
+	if rightIndex <= heapSize && a[rightIndex] > a[largest] {
+		largest = rightIndex
+	}
+	if largest != i {
+		a[i], a[largest] = a[largest], a[i]
+		maxHeapify(a, largest, heapSize)
+	}
+}
+
 func heapMaximum(a []float64) float64 {
 	return a[0]
 }
