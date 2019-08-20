@@ -28,6 +28,13 @@ func maxHeapify(a []float64, i, heapSize int) {
 	}
 }
 
+func buildMaxHeap(a []float64) {
+	length := len(a) - 1
+	for i := (length - 1) / 2; i >= 0; i-- {
+		maxHeapify(a, i, length)
+	}
+}
+
 func heapMaximum(a []float64) float64 {
 	return a[0]
 }
