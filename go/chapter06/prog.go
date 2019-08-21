@@ -35,6 +35,17 @@ func buildMaxHeap(a []float64) {
 	}
 }
 
+func heapsort(a []float64) {
+	buildMaxHeap(a)
+	length := len(a) - 1
+	heapSize := length
+	for i := length; i >= 1; i-- {
+		a[0], a[i] = a[i], a[0]
+		heapSize--
+		maxHeapify(a, 0, heapSize)
+	}
+}
+
 func heapMaximum(a []float64) float64 {
 	return a[0]
 }

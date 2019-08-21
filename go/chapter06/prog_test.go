@@ -110,6 +110,30 @@ func TestBuildMaxHeap(t *testing.T) {
 	}
 }
 
+func TestHeapsort(t *testing.T) {
+	parameters := []struct {
+		a        []float64
+		expected []float64
+	}{
+		{
+			[]float64{2, 3, 2, 1},
+			[]float64{1, 2, 2, 3},
+		},
+		{
+			[]float64{4, 1, 3, 2, 16, 9, 10, 14, 8, 7},
+			[]float64{1, 2, 3, 4, 7, 8, 9, 10, 14, 16},
+		},
+	}
+
+	for i, param := range parameters {
+		a, expected := param.a, param.expected
+		heapsort(a)
+		if !reflect.DeepEqual(a, expected) {
+			t.Errorf("i: %d\nactual: %v\nexpected: %v", i, a, expected)
+		}
+	}
+}
+
 func TestHeapMaximum(t *testing.T) {
 	a := []float64{3, 2, 1}
 	var expected float64 = 3
