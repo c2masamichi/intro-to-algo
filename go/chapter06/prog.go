@@ -49,3 +49,13 @@ func heapsort(a []float64) {
 func heapMaximum(a []float64) float64 {
 	return a[0]
 }
+
+func heapExtractMax(a []float64) (float64, []float64) {
+	heapSize := len(a) - 1
+	max := a[0]
+	a[0] = a[heapSize]
+	a = a[:len(a)-1]
+	heapSize--
+	maxHeapify(a, 0, heapSize)
+	return max, a
+}

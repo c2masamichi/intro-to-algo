@@ -142,3 +142,35 @@ func TestHeapMaximum(t *testing.T) {
 		t.Errorf("actual: %v\nexpected: %v", actual, expected)
 	}
 }
+
+func TestHeapExtractMax(t *testing.T) {
+	parameters := []struct {
+		a     []float64
+		max   float64
+		after []float64
+	}{
+		{
+			[]float64{4},
+			4, []float64{},
+		},
+		{
+			[]float64{4, 2, 3, 1},
+			4, []float64{3, 2, 1},
+		},
+		{
+			[]float64{16, 14, 10, 8, 7, 9, 3, 2, 4, 1},
+			16, []float64{14, 8, 10, 4, 7, 9, 3, 2, 1},
+		},
+	}
+
+	for i, param := range parameters {
+		a, expectedMax, after := param.a, param.max, param.after
+		actualMax, a := heapExtractMax(a)
+		if actualMax != expectedMax {
+			t.Errorf("actual: %v\nexpected: %v", actualMax, expectedMax)
+		}
+		if !reflect.DeepEqual(a, after) {
+			t.Errorf("i: %d\nactual: %v\nexpected: %v", i, a, after)
+		}
+	}
+}
