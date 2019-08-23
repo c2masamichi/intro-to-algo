@@ -59,3 +59,11 @@ func heapExtractMax(a []float64) (float64, []float64) {
 	maxHeapify(a, 0, heapSize)
 	return max, a
 }
+
+func heapIncreaseKey(a []float64, i int, key float64) {
+	a[i] = key
+	for i > 0 && a[parent(i)] < a[i] {
+		a[i], a[parent(i)] = a[parent(i)], a[i]
+		i = parent(i)
+	}
+}

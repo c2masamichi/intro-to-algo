@@ -174,3 +174,29 @@ func TestHeapExtractMax(t *testing.T) {
 		}
 	}
 }
+
+func TestHeapIncreaseKey(t *testing.T) {
+	parameters := []struct {
+		a        []float64
+		index    int
+		key      float64
+		expected []float64
+	}{
+		{
+			[]float64{3, 2, 1}, 1, 4,
+			[]float64{4, 3, 1},
+		},
+		{
+			[]float64{16, 14, 10, 8, 7, 9, 3, 2, 4, 1}, 8, 15,
+			[]float64{16, 15, 10, 14, 7, 9, 3, 2, 8, 1},
+		},
+	}
+
+	for i, param := range parameters {
+		a, index, key, expected := param.a, param.index, param.key, param.expected
+		heapIncreaseKey(a, index, key)
+		if !reflect.DeepEqual(a, expected) {
+			t.Errorf("i: %d\nactual: %v\nexpected: %v", i, a, expected)
+		}
+	}
+}
