@@ -200,3 +200,32 @@ func TestHeapIncreaseKey(t *testing.T) {
 		}
 	}
 }
+
+func TestMaxHeapInsert(t *testing.T) {
+	parameters := []struct {
+		a        []float64
+		key      float64
+		expected []float64
+	}{
+		{
+			[]float64{4, 3, 2}, 1,
+			[]float64{4, 3, 2, 1},
+		},
+		{
+			[]float64{4, 3, 2}, 5,
+			[]float64{5, 4, 2, 3},
+		},
+		{
+			[]float64{16, 14, 10, 8, 7, 9, 3, 2, 4, 1}, 15,
+			[]float64{16, 15, 10, 8, 14, 9, 3, 2, 4, 1, 7},
+		},
+	}
+
+	for i, param := range parameters {
+		a, key, expected := param.a, param.key, param.expected
+		a = maxHeapInsert(a, key)
+		if !reflect.DeepEqual(a, expected) {
+			t.Errorf("i: %d\nactual: %v\nexpected: %v", i, a, expected)
+		}
+	}
+}

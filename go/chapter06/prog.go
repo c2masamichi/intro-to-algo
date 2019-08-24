@@ -1,5 +1,9 @@
 package chapter06
 
+import (
+	"math"
+)
+
 func parent(i int) int {
 	return (i - 1) / 2
 }
@@ -66,4 +70,11 @@ func heapIncreaseKey(a []float64, i int, key float64) {
 		a[i], a[parent(i)] = a[parent(i)], a[i]
 		i = parent(i)
 	}
+}
+
+func maxHeapInsert(a []float64, key float64) []float64 {
+	heapSize := len(a)
+	a = append(a, math.Inf(-1))
+	heapIncreaseKey(a, heapSize, key)
+	return a
 }
